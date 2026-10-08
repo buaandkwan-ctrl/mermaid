@@ -19,7 +19,7 @@ sequenceDiagram
     MD-->>L: NBA grid + responseTrackingCode per customer
     L->>S3: Decision result file<br/>(customer_id, responseTrackingCode, action_code)
     S3->>SFMC: Import file into DE
-    Note over SFMC: Journey -> send LINE
+    Note over SFMC: Journey -> send messages
 
     Note over SFMC,MD: 2. Return - contact and response
     SFMC->>S3: Sent / Open / Click file<br/>(joined on responseTrackingCode)
