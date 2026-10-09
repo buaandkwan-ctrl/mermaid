@@ -11,7 +11,7 @@ sequenceDiagram
         participant MD as SAS MD runtime
     end
 
-    Note over SFMC,MD: 1. Outbound --> SAS MD : get decisions 
+    Note over SFMC,MD: 1. Outbound from SFMC to SAS MD : get decisions 
     SFMC->>S3: Audience file (customer_id, channel_id)<br/>SQL -> DE Extract -> File Convert UTF-8 -> File Transfer
     S3->>L: S3 event trigger
     L->>MD: Event request "SF Best journey request"<br/>(customer_id, channel_id)
@@ -21,7 +21,7 @@ sequenceDiagram
     S3->>SFMC: Import file into DE
     Note over SFMC: Journey -> send messages
 
-    Note over SFMC,MD: 2. Return to --> SAS MD : contact and response
+    Note over SFMC,MD: 2. Return contact and response to SAS MD 
     SFMC->>S3: Sent / Open / Click file<br/>(joined on responseTrackingCode)
     S3->>L: S3 event trigger
     L->>MD: Subject Contact API<br/>/markAsContacts (Sent), /responses (Open/Click)
